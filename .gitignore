@@ -1,0 +1,21 @@
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### Vaadin specific ###
+node_modules/
+**/frontend/generated/
+**/frontend/build/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+### Other ignored directives ***
+*.log
