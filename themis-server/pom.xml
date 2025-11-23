@@ -80,6 +80,7 @@
 							<generatorName>spring</generatorName>
 							<apiPackage>ai.neodatagroup.themis.server.api</apiPackage>
 							<modelPackage>ai.neodatagroup.themis.server.model</modelPackage>
+							<ignoreFileOverride>.openapi-generator-ignore</ignoreFileOverride>
 							<configOptions>
 								<basePackage>ai.neodatagroup.themis.server</basePackage>
 								<configPackage>ai.neodatagroup.themis.server.config</configPackage>
@@ -99,9 +100,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>ai.neodatagroup.themis.server.OpenApiGeneratorApplication</mainClass>
+					<mainClass>ai.neodatagroup.themis.server.ThemisServerApplication</mainClass>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 
