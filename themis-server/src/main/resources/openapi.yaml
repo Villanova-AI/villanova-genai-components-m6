@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Themis API
   version: 1.0.0
-  description: API for the Themis recommender system.
+  description: API for the Themis recommender system
 servers:
   - url: http://localhost:8080
   - url: https://api.themis.example.com
