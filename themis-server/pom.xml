@@ -91,6 +91,9 @@
 							<generatorName>spring</generatorName>
 							<apiPackage>ai.neodatagroup.themis.server.api</apiPackage>
 							<modelPackage>ai.neodatagroup.themis.server.model</modelPackage>
+							<typeMappings>
+								<typeMapping>OffsetDateTime=java.time.Instant</typeMapping>
+							</typeMappings>
 							<ignoreFileOverride>.openapi-generator-ignore</ignoreFileOverride>
 							<configOptions>
 								<basePackage>ai.neodatagroup.themis.server</basePackage>
@@ -105,6 +108,20 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>1.6.3</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
 			</plugin>
 
 			<plugin>
