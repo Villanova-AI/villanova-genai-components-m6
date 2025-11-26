@@ -1,12 +1,11 @@
+
 package ai.neodatagroup.themis.chat;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
+import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.server.PWA;
+import com.vaadin.flow.theme.lumo.Lumo;
 
-/**
- * This class is used to configure the generated html host page used by the app
- */
-@PWA(name = "My Application", shortName = "My Application")
-public class AppShell implements AppShellConfigurator {
-    
-}
+@Theme(themeClass = Lumo.class, variant = Lumo.LIGHT)
+@PWA(name = "Themis Chat", shortName = "Themis Chat")
+public class AppShell implements AppShellConfigurator {}

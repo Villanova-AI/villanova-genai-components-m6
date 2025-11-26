@@ -17,5 +17,13 @@ pnpm-lock.yaml
 package-lock.json
 yarn.lock
 
+### Other Vaadin specific ###
+**/src/main/bundles/
+package.json
+tsconfig.json
+types.d.ts
+vite.config.ts
+vite.generated.ts
+
 ### Other ignored directives ***
 *.log
