@@ -1,5 +1,10 @@
 package ai.neodatagroup.themis.chat;
 
+import ai.neodatagroup.themis.client.ApiClient;
+import ai.neodatagroup.themis.client.ApiException;
+import ai.neodatagroup.themis.client.Configuration;
+import ai.neodatagroup.themis.client.api.SourcesApi;
+import ai.neodatagroup.themis.client.model.Source;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -23,6 +28,9 @@ public class MainView extends VerticalLayout {
     private final int MAX_ITEMS = 50;
 
     public MainView() {
+        ApiClient client = Configuration.getDefaultApiClient();
+        SourcesApi sourceApi = new SourcesApi(client);
+
         setSizeFull();
         setPadding(true);
         setSpacing(true);
@@ -52,6 +60,20 @@ public class MainView extends VerticalLayout {
 
                 // Simulate bot response
                 Component botResponse = new Span("You typed: " + userInput);
+                addItem(false, botResponse);
+
+                StringBuilder builder = new StringBuilder();
+                builder.append("foo");
+                try {
+                    List<Source> sources = sourceApi.listSources();
+                    for (Source source : sources) {
+                        builder.append(source.getName());
+                    }
+                }
+                catch (ApiException e) {
+                    builder.append("error");
+                }
+                botResponse = new Span(builder.toString());
                 addItem(false, botResponse);
             }
         });

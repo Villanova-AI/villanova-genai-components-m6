@@ -14,7 +14,6 @@
   <modules>
     <module>themis-server</module>
     <module>themis-chat</module>
-    <module>themis-client</module>
   </modules>
 
   <properties>
