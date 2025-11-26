@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>ai.neodatagroup.themis</groupId>
+    <artifactId>themis</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>themis-client</artifactId>
+  <packaging>jar</packaging>
+
+  <name>themis-openapi</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.19.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.19.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.19.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>2.19.4</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>
+      <version>2.1.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.openapitools</groupId>
+        <artifactId>openapi-generator-maven-plugin</artifactId>
+        <version>7.8.0</version>
+        <executions>
+          <execution>
+            <id>generate-client</id>
+            <goals><goal>generate</goal></goals>
+            <phase>generate-sources</phase>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/openapi.yaml</inputSpec>
+              <generatorName>java</generatorName>
+              <apiPackage>ai.neodatagroup.themis.client.api</apiPackage>
+              <modelPackage>ai.neodatagroup.themis.client.model</modelPackage>
+              <configOptions>
+                <library>native</library>
+                <dateLibrary>java8</dateLibrary>
+                <useJakartaEe>true</useJakartaEe>
+                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                <openApiNullable>false</openApiNullable>
+              </configOptions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
