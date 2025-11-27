@@ -1,14 +1,22 @@
 package ai.neodatagroup.themis.chat;
 
-import org.apache.commons.lang3.NotImplementedException;
+import com.vaadin.flow.component.html.Span;
+
+import java.net.URI;
 
 public class CreateSourceCommand extends Command {
-    public CreateSourceCommand(Bot bot) {
-        super(bot, "Create source");
+    public CreateSourceCommand() {
+        super(
+            "Create source",
+            new Argument("uri", URI.class),
+            new Argument("name", String.class),
+            new Argument("description", String.class)
+        );
     }
 
-    @Override
-    public void execute() {
-        throw new NotImplementedException();
+    public Operation execute(Bot bot, Object... values) {
+        super.validate(values);
+        bot.addComponent(new Span("Not yet implemented."));
+        return new Peek();
     }
 }

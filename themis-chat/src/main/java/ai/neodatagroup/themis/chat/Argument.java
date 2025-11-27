@@ -1,18 +1,19 @@
 package ai.neodatagroup.themis.chat;
 
 public class Argument {
+    private final String name;
+
     private final Class<?> type;
 
-    private final boolean required;
+     public Argument(String name, Class<?> type) {
+         this.name = name;
+         this.type = type;
+     }
 
-    private final boolean repeated;
-
-    private final Object defaultValue;
-
-    public Argument(Class<?> type, boolean required, boolean repeated, Object defaultValue) {
-        this.type = type;
-        this.required = required;
-        this.repeated = repeated;
-        this.defaultValue = defaultValue;
+    public void validate(Object value) {
+        if (!type.isInstance(value)) {
+            throw new IllegalArgumentException("Type mismatch: expected " + type.getName() + ", got " + value.getClass().getName());
+        }
     }
+
 }

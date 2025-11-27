@@ -5,19 +5,22 @@ import ai.neodatagroup.themis.client.ApiException;
 import ai.neodatagroup.themis.client.Configuration;
 import ai.neodatagroup.themis.client.api.SourcesApi;
 import ai.neodatagroup.themis.client.model.Source;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.List;
 
 public class ListSourcesCommand extends Command {
-    public ListSourcesCommand(Bot bot) {
-        super(bot, "List sources");
+    public ListSourcesCommand() {
+        super("List sources");
     }
 
-    public void execute() {
+    @Override
+    public Operation execute(Bot bot, Object... values) {
+        super.validate(values);
+
         ApiClient client = Configuration.getDefaultApiClient();
         SourcesApi api = new SourcesApi(client);
         try {
@@ -44,5 +47,6 @@ public class ListSourcesCommand extends Command {
             errorLayout.add(new Span("Message: " + e.getMessage()));
             bot.addComponent(errorLayout);
         }
+        return new Peek();
     }
 }

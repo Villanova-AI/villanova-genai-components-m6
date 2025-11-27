@@ -1,35 +1,31 @@
 package ai.neodatagroup.themis.chat;
 
-import java.util.Collections;
-import java.util.Map;
+import com.vaadin.flow.component.Component;
 
 public abstract class Command {
-    protected final Bot bot;
-
     private final String name;
 
     private final Argument[] args;
 
-    private final Map<String, Argument> namedArgs;
-
-    public Command(Bot bot, String name) {
-        this(bot, name, Collections.emptyMap(), new Argument[0]);
-    }
-
-    public Command(Bot bot, String name, Argument... args) {
-        this(bot, name, Collections.emptyMap(), args);
-    }
-
-    public Command(Bot bot, String name, Map<String, Argument> namedArgs, Argument... args) {
-        this.bot = bot;
+    public Command(String name, Argument... args) {
         this.name = name;
         this.args = args;
-        this.namedArgs = namedArgs;
     }
 
     public String getName() {
         return name;
     }
 
-    public abstract void execute();
+    protected void validate(Object... values) {
+        if (values.length != args.length) {
+            throw new IllegalArgumentException("Expected " + args.length + " positional arguments, got " + values.length);
+        }
+        for (int i = 0; i < args.length; i++) {
+            Argument spec = args[i];
+            Object value = values[i];
+            spec.validate(value);
+        }
+    }
+
+    protected abstract Operation execute(Bot bot, Object... values);
 }

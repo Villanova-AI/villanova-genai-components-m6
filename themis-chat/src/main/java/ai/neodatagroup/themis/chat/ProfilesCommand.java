@@ -2,9 +2,9 @@ package ai.neodatagroup.themis.chat;
 
 import com.vaadin.flow.component.html.Span;
 
-public class UpdateSourceCommand extends Command {
-    public UpdateSourceCommand() {
-        super("Update source");
+public class ProfilesCommand extends Command {
+    public ProfilesCommand() {
+        super("Profiles");
     }
 
     @Override

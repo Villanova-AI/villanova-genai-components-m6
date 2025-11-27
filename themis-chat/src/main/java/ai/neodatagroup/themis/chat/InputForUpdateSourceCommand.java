@@ -1,9 +1,10 @@
 package ai.neodatagroup.themis.chat;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Span;
 
-public class UpdateSourceCommand extends Command {
-    public UpdateSourceCommand() {
+public class InputForUpdateSourceCommand extends Command {
+    public InputForUpdateSourceCommand() {
         super("Update source");
     }
 

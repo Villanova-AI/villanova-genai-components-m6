@@ -1,13 +1,13 @@
 package ai.neodatagroup.themis.chat;
 
 public class BackCommand extends Command{
-    public BackCommand(Bot bot) {
-        super(bot, "Back");
+    public BackCommand() {
+        super("Back");
     }
 
     @Override
-    public void execute() {
-        bot.menus.pop();
-        bot.showMenuOrExit();
+    public Operation execute(Bot bot, Object... values) {
+        super.validate(values);
+        return new Pop();
     }
 }
