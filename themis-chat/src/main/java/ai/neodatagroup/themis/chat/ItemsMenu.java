@@ -1,10 +1,9 @@
 package ai.neodatagroup.themis.chat;
 
 public class ItemsMenu extends Menu {
-    public ItemsMenu(Bot bot) {
+    public ItemsMenu() {
         super(
             "Commands to manage items",
-            bot,
             new BackCommand()
         );
     }

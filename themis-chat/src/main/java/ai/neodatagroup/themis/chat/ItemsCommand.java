@@ -8,6 +8,6 @@ public class ItemsCommand extends Command {
     @Override
     public Operation execute(Bot bot, Object... values) {
         super.validate(values);
-        return new Push(new ItemsMenu(bot));
+        return new Push(new ItemsMenu());
     }
 }

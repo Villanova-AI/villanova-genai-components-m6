@@ -8,6 +8,6 @@ public class JobsCommand extends Command {
     @Override
     public Operation execute(Bot bot, Object... values) {
         super.validate(values);
-        return new Push(new JobsMenu(bot));
+        return new Push(new JobsMenu());
     }
 }

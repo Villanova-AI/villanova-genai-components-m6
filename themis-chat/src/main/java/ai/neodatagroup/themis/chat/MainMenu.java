@@ -4,7 +4,6 @@ public class MainMenu extends Menu {
     public MainMenu(Bot bot) {
         super(
             "Main menu",
-            bot,
             new SourcesCommand(),
             new ItemsCommand(),
             new JobsCommand(),

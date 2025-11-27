@@ -8,6 +8,6 @@ public class DatasetsCommand extends Command {
     @Override
     public Operation execute(Bot bot, Object... values) {
         super.validate(values);
-        return new Push(new DatasetsMenu(bot));
+        return new Push(new DatasetsMenu());
     }
 }

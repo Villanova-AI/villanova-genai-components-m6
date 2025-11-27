@@ -91,7 +91,7 @@ public class Bot extends VerticalLayout {
             throw new IllegalStateException();
         }
         else {
-            addComponent(menus.peek().getComponent());
+            addComponent(menus.peek().getComponent(this));
         }
     }
 }

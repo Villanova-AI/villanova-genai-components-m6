@@ -1,10 +1,9 @@
 package ai.neodatagroup.themis.chat;
 
 public class SourcesMenu extends Menu {
-    public SourcesMenu(Bot bot) {
+    public SourcesMenu() {
         super(
             "Commands to manage sources",
-            bot,
             new ListSourcesCommand(),
             new InputForGetSourceCommand(),
             new InputForCreateSourceCommand(),
