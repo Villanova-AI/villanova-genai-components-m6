@@ -7,19 +7,19 @@ servers:
   - url: http://localhost:8080
 tags:
   - name: Sources
-    description: CRUD operations for sources
+    description: Operations for managing sources
   - name: Items
-    description: CRUD operations for items
+    description: Operations for managing items
   - name: Datasets
-    description: CRUD operations for datasets
+    description: Operations for managing datasets
   - name: Models
-    description: CRUD operations for models
+    description: Operations for managing models
   - name: Jobs
-    description: Execute jobs like crawl, encode, curate, train, and test
+    description: Operations for executing jobs (crawl, encode, curate, train, and test)
   - name: Recommendations
-    description: Generate recommendations
-  - name: Profiles
-    description: Track user profiles
+    description: Operation for generating recommendations
+  - name: Users
+    description: Operations for managing users
 paths:
   /api/v1/sources:
     get:
@@ -626,7 +626,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Profile'
+              $ref: '#/components/schemas/User'
       responses:
         '201':
           description: Recommendation generated successfully
@@ -658,7 +658,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Profile'
+                $ref: '#/components/schemas/User'
         '400': *id001
         '404': *id002
         '500': *id003
@@ -877,23 +877,34 @@ components:
           format: date-time
           description: Timestamp when the recommendation was generated, in UTC
       additionalProperties: false
-    Profile:
+    User:
       type: object
       properties:
+        id:
+          type: integer
+          format: int64
+          description: Unique identifier of the user
+          readOnly: true
+        name:
+          type: string
+          description: Name of the user
         items:
           type: array
           items:
             type: integer
-          description: List of item IDs associated with the profile
+          description: List of item IDs with which the user has interacted
         created_at:
           type: string
           format: date-time
-          description: Profile creation timestamp in UTC
+          description: User creation timestamp in UTC
+          readOnly: true
         updated_at:
           type: string
           format: date-time
-          description: Profile last update timestamp in UTC
+          description: User last update timestamp in UTC
+          readOnly: true
       required:
+        - name
         - items
       additionalProperties: false
     Error:
