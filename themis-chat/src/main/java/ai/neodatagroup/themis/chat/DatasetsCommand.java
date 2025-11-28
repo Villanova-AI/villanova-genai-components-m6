@@ -8,6 +8,11 @@ public class DatasetsCommand extends Command {
     @Override
     public Operation execute(Bot bot, Object... values) {
         super.validate(values);
-        return new Push(new DatasetsMenu());
+        Menu menu = new Menu(
+            "Commands to manage datasets",
+            "When fully implemented, this section will allow you to manage the machine learning datasets for my recommendation models.",
+            new PopCommand()
+        );
+        return new Push(menu);
     }
 }

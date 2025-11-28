@@ -1,17 +1,13 @@
 package ai.neodatagroup.themis.chat;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.value.ValueChangeMode;
 
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 
 public class InputForCreateSourceCommand extends Command {
     public InputForCreateSourceCommand() {
@@ -53,7 +49,7 @@ public class InputForCreateSourceCommand extends Command {
 
         Button cancelButton = new Button("Cancel");
         cancelButton.addClickListener(event -> {
-            bot.execute(new CancelCommand());
+            bot.execute(new PeekCommand());
         });
 
         form.add(uriField, nameField, descriptionArea, submitButton, cancelButton);

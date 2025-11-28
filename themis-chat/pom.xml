@@ -91,10 +91,16 @@
       <version>6.0.0</version>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>com.vladsch.flexmark</groupId>
+      <artifactId>flexmark-all</artifactId>
+      <version>0.64.8</version>
+    </dependency>
+
   </dependencies>
 
   <build>
-    <defaultGoal>jetty:run</defaultGoal>
     <plugins>
       <plugin>
         <groupId>com.vaadin</groupId>
@@ -130,11 +136,15 @@
               <generatorName>java</generatorName>
               <apiPackage>ai.neodatagroup.themis.client.api</apiPackage>
               <modelPackage>ai.neodatagroup.themis.client.model</modelPackage>
+              <typeMappings>
+                <typeMapping>OffsetDateTime=java.time.Instant</typeMapping>
+              </typeMappings>
               <configOptions>
                 <library>native</library>
                 <dateLibrary>java8</dateLibrary>
                 <useJakartaEe>true</useJakartaEe>
                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                <useOptional>true</useOptional>
                 <openApiNullable>false</openApiNullable>
               </configOptions>
             </configuration>

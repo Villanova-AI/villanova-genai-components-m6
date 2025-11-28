@@ -8,6 +8,11 @@ public class ModelsCommand extends Command {
     @Override
     public Operation execute(Bot bot, Object... values) {
         super.validate(values);
-        return new Push(new ModelsMenu());
+        Menu menu = new Menu(
+            "Commands to manage models",
+            "When fully implemented, this section will allow you to manage my recommendation models.",
+            new PopCommand()
+        );
+        return new Push(menu);
     }
 }
