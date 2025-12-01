@@ -67,7 +67,7 @@ public class Bot extends VerticalLayout {
             new DatasetsCommand(),
             new ModelsCommand(),
             new UsersCommand(),
-            new RecommendationsCommand()
+            new InputForRecommendationsCommand()
         );
         new Push(mainMenu).execute(this);
     }

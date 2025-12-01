@@ -13,7 +13,14 @@ public class SourcesCommand extends Command {
             """
             When fully implemented, this section will allow you to manage a set of sources for the items I may recommend to you.
             
-            Supported sources may be Wordpress e-commerce websites or news RSS feeds.
+            Supported sources are:
+             
+            - e-commerce websites;
+            - eBay;
+            - news RSS feeds;
+            - business directories;
+            - Wikipedia;
+            - PGN chess databases.
             """,
             //new ListSourcesCommand(),
             //new InputForGetSourceCommand(),
