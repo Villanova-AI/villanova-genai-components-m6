@@ -49,8 +49,8 @@ openApiGenerate {
     generatorName.set("java")
     inputSpec.set("${rootProject.projectDir}/themis-openapi/openapi.yaml")
     outputDir.set(layout.buildDirectory.dir("generated").map { it.asFile.absolutePath })
-    apiPackage.set("ai.neodatagroup.themis.client.api")
-    modelPackage.set("ai.neodatagroup.themis.client.model")
+    apiPackage.set("ai.neodatagroup.themis.bot.api")
+    modelPackage.set("ai.neodatagroup.themis.bot.model")
     typeMappings.set(mapOf("OffsetDateTime" to "java.time.Instant"))
     configOptions.set(
         mapOf(
@@ -58,7 +58,7 @@ openApiGenerate {
             "dateLibrary" to "java8",
             "useJakartaEe" to "true",
             "hideGenerationTimestamp" to "true",
-            "useOptional" to "true",
+            "useOptional" to "false",
             "openApiNullable" to "false"
         )
     )

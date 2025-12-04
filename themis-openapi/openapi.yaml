@@ -27,6 +27,24 @@ paths:
         - Sources
       summary: List all sources
       operationId: listSources
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          description: Page number
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+          description: Page size
       responses:
         '200':
           description: Successful response
@@ -102,34 +120,6 @@ paths:
       tags:
         - Sources
       summary: Replace source by ID
-      operationId: replaceSource
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Source'
-      responses:
-        '200':
-          description: Updated successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Source'
-        '400': *id001
-        '404': *id002
-        '500': *id003
-    patch:
-      tags:
-        - Sources
-      summary: Update source partially
       operationId: updateSource
       parameters:
         - name: id
@@ -672,16 +662,31 @@ components:
           format: int64
           description: Unique identifier of the source
           readOnly: true
-        url:
-          type: string
-          format: uri
-          description: URL of the source
         name:
           type: string
           description: Name of the source
         description:
           type: string
           description: Short description of the source
+        type:
+          type: string
+          description: Type of the source
+          enum:
+            - woocommerce
+            - shopify
+            - magento
+            - ebay
+            - rss
+            - yelp
+            - yellow_pages
+            - google_places
+            - foursquare
+            - wikipedia
+            - pgn
+        url:
+          type: string
+          format: uri
+          description: URL of the source
         created_at:
           type: string
           format: date-time
@@ -923,11 +928,6 @@ components:
         - code
         - message
       additionalProperties: false
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   responses:
     BadRequest:
       description: Bad request
@@ -955,5 +955,3 @@ components:
       schema:
         type: integer
         format: int64
-security:
-  - BearerAuth: []

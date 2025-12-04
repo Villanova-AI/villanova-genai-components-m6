@@ -5,6 +5,8 @@ import ai.neodatagroup.themis.server.mapper.SourceMapper;
 import ai.neodatagroup.themis.server.model.Source;
 import ai.neodatagroup.themis.server.repository.SourceRepository;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,8 +50,8 @@ public class SourceService {
     }
 
     @Transactional(readOnly = true)
-    public List<Source> list() {
-        return repository.findAll().stream().map(mapper::toDto).toList();
+    public Page<Source> list(Pageable pageable) {
+        return repository.findAll(pageable).map(mapper::toDto);
     }
 
     @Transactional

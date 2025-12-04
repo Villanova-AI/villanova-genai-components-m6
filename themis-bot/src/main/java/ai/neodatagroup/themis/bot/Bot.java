@@ -48,8 +48,8 @@ public class Bot extends VerticalLayout {
             
             These are your options:
             
-            - **Items** allows you to edit the set of items that I may recommend to you.
             - **Sources** allows you to set up sources of items to recommend.
+            - **Items** allows you to edit the set of items that I may recommend to you.
             - **Jobs** allows you to manage jobs on my server, enabling you to:
               - automatically populate the items from the sources;
               - automatically compute semantic embeddings modelling the items;
@@ -61,8 +61,8 @@ public class Bot extends VerticalLayout {
             - **Users** allows you to manage users, and set the current user.
             - **Recommendations** allows you to receive personalized recommendations for the current user.
             """,
-            new ItemsCommand(),
             new SourcesCommand(),
+            new ItemsCommand(),
             new JobsCommand(),
             new DatasetsCommand(),
             new ModelsCommand(),

@@ -1,23 +1,28 @@
 package ai.neodatagroup.themis.server.entity;
 
+import ai.neodatagroup.themis.server.model.Source;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "sources", indexes = { @Index(name = "idx_sources_url", columnList = "url") })
+@Table(name = "sources")
 public class SourceEntity extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String url;
-
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(columnDefinition = "text")
-    private String description;
+    @Column(columnDefinition = "text", nullable = false)
+    private String description = "";
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Source.TypeEnum type;
+
+    @Column(nullable = false, unique = true)
+    private String url;
 
     public SourceEntity() {}
 
@@ -27,14 +32,6 @@ public class SourceEntity extends Auditable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public String getName() {
@@ -50,6 +47,22 @@ public class SourceEntity extends Auditable {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = (description == null) ? "" : description;
+    }
+
+    public Source.TypeEnum getType() {
+        return type;
+    }
+
+    public void setType(Source.TypeEnum type) {
+        this.type = type;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

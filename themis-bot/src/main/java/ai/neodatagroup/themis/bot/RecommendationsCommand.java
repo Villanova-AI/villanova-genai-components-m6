@@ -1,6 +1,6 @@
 package ai.neodatagroup.themis.bot;
 
-import ai.neodatagroup.themis.client.model.Item;
+import ai.neodatagroup.themis.bot.model.Item;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Anchor;

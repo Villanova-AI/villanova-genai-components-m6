@@ -3,13 +3,18 @@ package ai.neodatagroup.themis.server.api;
 import ai.neodatagroup.themis.server.model.Source;
 import ai.neodatagroup.themis.server.service.NotFoundException;
 import ai.neodatagroup.themis.server.service.SourceService;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class SourcesApiDelegateImpl implements SourcesApiDelegate {
@@ -48,21 +53,23 @@ public class SourcesApiDelegateImpl implements SourcesApiDelegate {
     @Override
     public ResponseEntity<Source> getSource(Long id) {
         try {
-            Source src = sourceService.get(id);
-            return ResponseEntity.ok(src);
+            Source source = sourceService.get(id);
+            return ResponseEntity.ok(source);
         } catch (NotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
     @Override
-    public ResponseEntity<List<Source>> listSources() {
-        List<Source> all = sourceService.list();
-        return ResponseEntity.ok(all);
+    public ResponseEntity<List<Source>> listSources(Integer page, Integer size) {
+        int pageNum = (page == null) ? 0 : page;
+        int pageSize = (size == null) ? 20 : size;
+        List<Source> sources = sourceService.list(PageRequest.of(pageNum, pageSize)).getContent();
+        return ResponseEntity.ok(sources);
     }
 
     @Override
-    public ResponseEntity<Source> replaceSource(Long id, Source source) {
+    public ResponseEntity<Source> updateSource(Long id, Source source) {
         try {
             Source updated = sourceService.replace(id, source);
             return ResponseEntity.ok(updated);

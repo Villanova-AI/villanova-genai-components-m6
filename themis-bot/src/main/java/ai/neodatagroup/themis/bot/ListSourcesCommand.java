@@ -1,10 +1,7 @@
 package ai.neodatagroup.themis.bot;
 
-import ai.neodatagroup.themis.client.ApiClient;
-import ai.neodatagroup.themis.client.ApiException;
-import ai.neodatagroup.themis.client.Configuration;
-import ai.neodatagroup.themis.client.api.SourcesApi;
-import ai.neodatagroup.themis.client.model.Source;
+import ai.neodatagroup.themis.bot.api.SourcesApi;
+import ai.neodatagroup.themis.bot.model.Source;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -23,7 +20,7 @@ public class ListSourcesCommand extends Command {
         ApiClient client = Configuration.getDefaultApiClient();
         SourcesApi api = new SourcesApi(client);
         try {
-            List<Source> sources = api.listSources();
+            List<Source> sources = api.listSources(0, 20);
 
             // Create a Vaadin component listing the retrieved sources
             VerticalLayout layout = new VerticalLayout();

@@ -12,7 +12,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 
-import ai.neodatagroup.themis.client.model.User;
+import ai.neodatagroup.themis.bot.model.User;
 
 import java.time.Instant;
 import java.util.Arrays;

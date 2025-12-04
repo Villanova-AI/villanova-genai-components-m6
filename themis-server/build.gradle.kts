@@ -8,6 +8,9 @@ plugins {
 description = "The server of the Themis recommender system"
 
 dependencies {
+    // Jackson
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
+
     // Spring Boot starters
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -45,7 +48,7 @@ openApiGenerate {
             "interfaceOnly" to "false",
             "delegatePattern" to "true",
             "useTags" to "true",
-            "useOptional" to "true",
+            "useOptional" to "false",
             "openApiNullable" to "false"
         )
     )
