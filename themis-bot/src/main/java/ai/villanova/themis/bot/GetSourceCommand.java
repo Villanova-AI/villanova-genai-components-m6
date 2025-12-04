@@ -1,0 +1,16 @@
+package ai.villanova.themis.bot;
+
+import com.vaadin.flow.component.html.Span;
+
+public class GetSourceCommand extends Command {
+    public GetSourceCommand() {
+        super("Get source");
+    }
+
+    @Override
+    public Operation execute(Bot bot, Object... values) {
+        super.validate(values);
+        bot.addComponent(new Span("Not yet implemented"));
+        return new Peek();
+    }
+}

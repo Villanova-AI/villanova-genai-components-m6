@@ -41,7 +41,7 @@ dependencies {
 
 // Spring Boot main class
 springBoot {
-    mainClass.set("ai.neodatagroup.themis.bot.ThemisBotApplication")
+    mainClass.set("ai.villanova.themis.bot.ThemisBotApplication")
 }
 
 
@@ -49,8 +49,8 @@ openApiGenerate {
     generatorName.set("java")
     inputSpec.set("${rootProject.projectDir}/themis-openapi/openapi.yaml")
     outputDir.set(layout.buildDirectory.dir("generated").map { it.asFile.absolutePath })
-    apiPackage.set("ai.neodatagroup.themis.bot.api")
-    modelPackage.set("ai.neodatagroup.themis.bot.model")
+    apiPackage.set("ai.villanova.themis.bot.api")
+    modelPackage.set("ai.villanova.themis.bot.model")
     typeMappings.set(mapOf("OffsetDateTime" to "java.time.Instant"))
     configOptions.set(
         mapOf(

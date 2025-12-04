@@ -6,7 +6,7 @@ plugins {
     base
 }
 
-group = "ai.neodatagroup.themis"
+group = "ai.villanova.themis"
 version = "1.0.0"
 
 val javaVersion = JavaLanguageVersion.of(25) // change to 21 if you prefer
