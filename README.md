@@ -31,7 +31,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO themis;
 Run the recommendation server with the following command:
 
 ```shell
-./mvnw -pl themis-server clean spring-boot:run
+./gradlew :themis-server:clean :themis-server:bootRun
 ```
 
 The server will be open at `http://localhost:8080`.
@@ -41,7 +41,7 @@ The server will be open at `http://localhost:8080`.
 After the recommendation server has been started, run the bot with the following command:
 
 ```shell
-./mvnw -pl themis-chat clean spring-boot:run
+./gradlew :themis-bot:clean :themis-bot:bootRun
 ```
 
 The bot interface will be available at `http://localhost:8081`.
